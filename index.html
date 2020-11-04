@@ -1,0 +1,17 @@
+<html>
+<head>
+    <script>
+        let ws = new WebSocket("ws://localhost:8080")
+        let counter =1 ;
+        ws.addEventListener("message" , (event)=>{
+            console.log("Got message: "+event.data)
+            let rootDiv = document.getElementById("root");
+            rootDiv.innerHTML += "Got message: "+event.data +"<br>"
+            ws.send("hello from client: "+counter++)
+        })        
+
+
+    </script>
+</head>
+<div id="root"></div>
+</html>
